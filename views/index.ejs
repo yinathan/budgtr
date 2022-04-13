@@ -4,9 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./skeleton.css" />
+
     <title>Orders</title>
 </head>
 <body>
-    
+    <div class="container">
+
+        <h1>Budgtr ALL</h1>
+        <% let bankAccount = 0;
+        for (let i = 0; i < allBudget.length; i++) {
+            bankAccount = bankAccount + parseInt(allBudget[i].amount)
+        } %>
+        <% if (bankAccount < 0) { %>
+            <style>
+                body{
+                    background-color: red;
+                }
+            </style>
+        <% } else if (bankAccount > 1000) {%>
+            <style>
+                body{
+                    background-color: green;
+                }
+            </style>
+        <% } else {%>
+            <style>
+                body{
+                    background-color: blanchedalmond;
+                }
+            </style>
+            <% } %>
+        <h2>$ <%= bankAccount %></h2>
+
+
+        <button onclick="location.href=`http://localhost:3000/budgets/new`" type="button">
+            Add Item</button>
+<table>
+        <% for (let i = 0; i < allBudget.length; i++) { %>
+            
+                <tr>
+                    <td><%=allBudget[i].date%></td>
+                    <td><a href="/budgets/<%= [i] %>"><%=allBudget[i].name%></a></td>
+                    <td>$ <%=allBudget[i].amount%></td>
+                </tr>   
+        <%}%>
+
+        </table>
+
+    </div>
 </body>
 </html>

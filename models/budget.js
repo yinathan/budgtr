@@ -1,4 +1,4 @@
-module.exports = [
+budget = [
   {
     date: 'April 1',
     name: 'Income',
